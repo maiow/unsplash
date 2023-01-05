@@ -1,2 +1,2 @@
-# unsplash
-Unsplash Android Kotlin application
+# Unfold
+Android Kotlin application with Unsplash API
