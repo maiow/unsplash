@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unsplash</string>
+    <string name="go_straight_to_authorization">Пропустить</string>
+    <string-array name="onboarding_texts_array">
+        <item>Создавайте снимки, публикуйте, собирайте аудиторию, получайте фидбек!</item>
+        <item>Делитесь с друзьями, собирайте коллекции</item>
+        <item>Загружайте любимые снимки и отслеживайте статистику</item>
+    </string-array>
+    <string name="login_via_unsplash">Войти через Unsplash</string>
+    <string name="about">О \@%1$s:\n%2$s</string>
+    <string name="made_with">Производитель: %1$s\n</string>
+    <string name="model">Модель: %1$s\n</string>
+    <string name="exposure">Экспозиция: %1$s\n</string>
+    <string name="aperture">Апертура: %1$s\n</string>
+    <string name="focal_length">Фокусное расстояние: %1$s\n</string>
+    <string name="iso">ISO: %1$s</string>
+    <string name="download">Загрузок (%1$d)</string>
+    <string name="auth_success">Авторизация прошла успешно</string>
+    <string name="alert_title">Информация</string>
+    <string name="alert_text">
+        Необходимо разрешение, чтобы сохранить фотографию на устройстве
+    </string>
+    <string name="search_hint">Найти фото...</string>
+    <string name="no_connection">Проверьте состояние сети</string>
+    <string name="photos_fragment_title">Фотографии</string>
+    <string name="collection_fragment_tittle">Коллекции</string>
+    <string name="logout">Выйти</string>
+    <string name="user_fragment_title">Профиль</string>
+    <string name="download_finished">Загрузка завершена</string>
+    <string name="open">ОТКРЫТЬ</string>
+    <string name="failed_download">Ошибка загрузки</string>
+    <string name="ok_to_download">Разрешение получено, загрузка фотографии доступна</string>
+    <string name="digest_name">Коллекция</string>
+    <plurals name="digest_data">
+        <item quantity="one">%1$d фотография от %2$s</item>
+        <item quantity="few">%1$d фотографии от %2$s</item>
+        <item quantity="many">%1$d фотографий от %2$s</item>
+        <item quantity="other">%1$d фотографий от %2$s</item>
+    </plurals>
+    <string name="content_description">изображение</string>
+    <string name="user_total_likes">Понравившиеся фотографии: %1$d</string>
+    <string name="logout_title">Вы уверены, что хотите выйти?</string>
+    <string name="logout_message">Все локальные данные будут удалены.</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="ok">Понятно</string>
+    <string name="search_menu_title">Поиск</string>
+    <string name="share">Поделиться</string>
+    <plurals name="total_photos">
+        <item quantity="one">%1$d фотография</item>
+        <item quantity="few">%1$d фотографии</item>
+        <item quantity="many">%1$d фотографий</item>
+        <item quantity="other">%1$d фотографий</item>
+    </plurals>
+    <string name="title_photos">Фотографии</string>
+    <string name="title_collections">Коллекции</string>
+    <string name="title_user">Профиль</string>
+    <string name="no_location">Для этой фотографии нет данных о местоположении</string>
+    <string name="one_photo_fragment_title">Фотография</string>
+</resources>

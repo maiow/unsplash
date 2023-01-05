@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name" translatable="false">Unsplash</string>
+    <string name="title_photos">Photos</string>
+    <string name="title_collections">Collections</string>
+    <string name="title_user">Profile</string>
+    <string-array name="onboarding_texts_array">
+        <item>Make photo, publish, gather an audience, get feedback!</item>
+        <item>Share with friends, make collections</item>
+        <item>Upload your favorite pictures and track statistics</item>
+    </string-array>
+    <string name="go_straight_to_authorization">Skip</string>
+    <string name="login_via_unsplash">Login via Unsplash</string>
+    <string name="about">About \@%1$s:\n%2$s</string>
+    <string name="made_with">Made with: %1$s\n</string>
+    <string name="model">Model: %1$s\n</string>
+    <string name="exposure">Exposure: %1$s\n</string>
+    <string name="aperture">Aperture: %1$s\n</string>
+    <string name="focal_length">Focal length: %1$s\n</string>
+    <string name="iso">ISO: %1$s</string>
+    <string name="download">Downloads (%1$d)</string>
+    <string name="position" translatable="false">%1$d %2$d</string>
+    <string name="auth_success">Successful authorisation</string>
+    <string name="alert_title">Info</string>
+    <string name="alert_text">
+        Permission required to save the photo to your device
+    </string>
+    <string name="search_hint">Search images...</string>
+    <string name="no_connection">Check the network connection</string>
+    <string name="photos_fragment_title">Photos</string>
+    <string name="collection_fragment_tittle">Collections</string>
+    <string name="logout">Logout</string>
+    <string name="user_fragment_title">Profile</string>
+    <string name="download_finished">Download finished</string>
+    <string name="open">OPEN</string>
+    <string name="failed_download">Download unsuccessful</string>
+    <string name="ok_to_download">Permission granted, Download button is enabled now</string>
+    <string name="digest_name">Collection</string>
+    <plurals name="digest_data">
+        <item quantity="one">%1$d photo by %2$s</item>
+        <item quantity="other">%1$d photos by %2$s</item>
+    </plurals>
+    <string name="content_description">image</string>
+    <string name="user_email" translatable="false">example@gmail.com</string>
+    <string name="user_total_likes">Images you liked: %1$d</string>
+    <string name="logout_title">Are you sure you want to logout?</string>
+    <string name="logout_message">All local data will be deleted.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">Ok</string>
+    <string name="author_account" translatable="false">\@%1$s</string>
+    <string name="search_menu_title">Search</string>
+    <string name="share">Share</string>
+    <plurals name="total_photos">
+        <item quantity="one">%1$d photo</item>
+        <item quantity="other">%1$d photos</item>
+    </plurals>
+    <string name="no_location">No location data for this photo</string>
+    <string name="one_photo_fragment_title">Photo Details</string>
+</resources>

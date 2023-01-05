@@ -83,3 +83,19 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+.gradle
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+.cxx
+/app/proguard-rules.pro
+.idea
+build
+app/build
+app/proguard-rules.pro

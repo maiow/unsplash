@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/mainFragment">
+
+    <fragment
+        android:id="@+id/navigation_onboarding"
+        android:name="com.example.unsplashattestation.presentation.onboarding.OnboardingFragment"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_navigation_onboarding_to_navigation_auth"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_photos"
+        android:name="com.example.unsplashattestation.presentation.photos.list.PhotosFragment"
+        android:label="@string/title_photos"
+        tools:layout="@layout/fragment_photos">
+        <action
+            android:id="@+id/action_navigation_photos_to_navigation_photo_details"
+            app:destination="@id/navigation_photo_details"
+            app:popUpTo="@id/navigation_photos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_digest"
+        android:name="com.example.unsplashattestation.presentation.collections.DigestFragment"
+        android:label="@string/title_collections"
+        tools:layout="@layout/fragment_digest">
+        <action
+            android:id="@+id/action_navigation_digest_to_digestDetailsFragment"
+            app:destination="@id/digestDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_user"
+        android:name="com.example.unsplashattestation.presentation.user.ProfileFragment"
+        android:label="@string/title_user"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_photo_details"
+            app:destination="@id/navigation_photo_details" />
+        <action
+            android:id="@+id/action_navigation_user_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/navigation_photos"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.unsplashattestation.presentation.auth.AuthFragment"
+        tools:layout="@layout/fragment_auth">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://unsplash.com/oauth/authorize/native?code={code}" />
+        <argument
+            android:name="code"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_authFragment_to_navigation_photos"
+            app:destination="@id/navigation_photos"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_photo_details"
+        android:name="com.example.unsplashattestation.presentation.photos.details.OnePhotoDetailsFragment"
+        tools:layout="@layout/fragment_one_photo_details">
+        <argument
+            android:name="photo_id"
+            android:defaultValue="8n72OQoS3pI" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://unsplash.com/photos/{photo_id}" />
+    </fragment>
+    <fragment
+        android:id="@+id/digestDetailsFragment"
+        android:name="com.example.unsplashattestation.presentation.collections.DigestDetailsFragment"
+        android:label="fragment_digest_details"
+        tools:layout="@layout/fragment_digest_details">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_digestDetailsFragment_to_navigation_photo_details"
+            app:destination="@id/navigation_photo_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.unsplashattestation.presentation.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_navigation_onboarding"
+            app:destination="@id/navigation_onboarding"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_navigation_photos"
+            app:destination="@id/navigation_photos"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
