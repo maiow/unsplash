@@ -26,7 +26,7 @@ class PhotosViewModel @Inject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     fun getPhoto() = query.asStateFlow()
-        .flatMapLatest { photosPagingUseCase.getPhoto(Requester.ALL_LIST.apply { param =it }) }
+        .flatMapLatest { photosPagingUseCase.getPhoto(Requester.ALL_LIST.apply { param = it }) }
         .cachedIn(CoroutineScope(Dispatchers.IO))
 
 

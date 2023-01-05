@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-abstract class BaseViewModel:ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     /**из AuthViewModel --- вот тут вообще лишнее. Для чего у нас в base view model  стоит стайт флоу а не шаред флоу?
      * вопервых если в большенство фрагментов лоад стейт старт то можно его прям стейте стартовым и
@@ -19,7 +19,7 @@ abstract class BaseViewModel:ViewModel() {
     protected val _loadState = MutableStateFlow(LoadState.START)
     val loadState = _loadState.asStateFlow()
 
-    protected val handler = CoroutineExceptionHandler { _, t ->
-            _loadState.value = LoadState.ERROR
+    protected val handler = CoroutineExceptionHandler { _, _ ->
+        _loadState.value = LoadState.ERROR
     }
 }

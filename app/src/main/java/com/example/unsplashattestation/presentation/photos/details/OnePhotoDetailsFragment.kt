@@ -82,7 +82,8 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
         setLocationClick()
         loadStateLike()
     }
-/** почему в onResume */
+
+    /** почему в onResume */
     override fun onResume() {
         super.onResume()
         val filter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
@@ -95,7 +96,6 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
                 val reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
                 if (viewModel.downloadID == reference) {
                     viewModel.getDMStatus(downloadManager)
-                    /**это вообще что? цикл который ниделает ничего */
                     while (viewModel.downloading) {
                         //Log.d("Kart", ".")
                     }
@@ -119,37 +119,32 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
             }
     }
 
-    /**when для кого придумали?*/
     private fun updateUiOnServerResponse(loadState: LoadState) {
         if (loadState == LoadState.ERROR) {
             binding.error.isVisible = true
             binding.scroll.isVisible = false
         }
-        if (loadState == LoadState.SUCCESS) {
-            /** опять кто мешал нам коррутину спрять в функцию?*/
-            viewLifecycleOwner.lifecycleScope
-                .launchWhenStarted {
-                    viewModel.state
-                        .collect { state -> updateUi(state) }
-                }
-        }
+        if (loadState == LoadState.SUCCESS) updateUi()
     }
-
 
     /**Салед класс тут не к селу ни к городу
      * из за этого ты данные почему то обзываешь стейтом, что очегь странно*/
-    private fun updateUi(state: DetailsState) {
-        when (state) {
-            DetailsState.NotStartedYet -> {}
-            is DetailsState.Success -> {
-                bindUploadedTexts(state)
-                bindUploadedImages(state)
-                setUploadedLocation(state)
-                setToolbar(state.data.id)
-                setLikeClick(state.data)
-                setDownloadOnClick(state.data.urls.raw, downloadManager)
+    private fun updateUi() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                viewModel.state.collect { state ->
+                        when (state) {
+                            DetailsState.NotStartedYet -> {}
+                            is DetailsState.Success -> {
+                                bindUploadedTexts(state)
+                                bindUploadedImages(state)
+                                setUploadedLocation(state)
+                                setToolbar(state.data.id)
+                                setLikeClick(state.data)
+                                setDownloadOnClick(state.data.urls.raw, downloadManager)
+                            }
+                        }
+                    }
             }
-        }
     }
 
     private fun bindUploadedTexts(state: DetailsState.Success) {
@@ -198,9 +193,10 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
             }
         }
     }
-/** тут прям надо объснять как лучше делать....потому что то что я видел ни куда не годится
- * сами путаетесь
- * */
+
+    /** тут прям надо объснять как лучше делать....потому что то что я видел ни куда не годится
+     * сами путаетесь
+     * */
     private fun loadStateLike() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loadState.collect { loadStateLike ->

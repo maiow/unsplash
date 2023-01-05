@@ -32,7 +32,8 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         binding.viewPager.registerOnPageChangeCallback(AnimateImageOnPageChange(binding.ellipseImage))
     }
 
-    private fun setTabs() = TabLayoutMediator(binding.tabs, binding.viewPager) { _, _ -> }.attach()
+    private fun setTabs() =
+        TabLayoutMediator(binding.tabs, binding.viewPager) { _, _ -> }.attach()
 
 
     private fun setAuthorizeButton() {

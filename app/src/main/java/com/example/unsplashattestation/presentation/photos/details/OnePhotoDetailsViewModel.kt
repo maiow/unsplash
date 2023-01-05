@@ -34,14 +34,11 @@ class OnePhotoDetailsViewModel @Inject constructor(
     var downloading = true
     var success = false
 
-    /**ну вот я открыл твой код не зна я что это за код
-     * что такое а?
-     * про стейты молчу уже и кстати...Все норм работает? лоадинг показывается?*/
+    /** про стейты молчу уже и кстати...Все норм работает? лоадинг показывается?*/
     fun loadPhotoDetails(id: String) {
         viewModelScope.launch(Dispatchers.IO + handler) {
-                val a = onePhotoDetailsUseCase.getPhotoDetails(id = id)
-                _loadState.value = LoadState.SUCCESS
-                _state.value = DetailsState.Success(a)
+            _loadState.value = LoadState.SUCCESS
+            _state.value = DetailsState.Success(onePhotoDetailsUseCase.getPhotoDetails(id = id))
         }
     }
 
@@ -51,9 +48,8 @@ class OnePhotoDetailsViewModel @Inject constructor(
     fun like(item: PhotoDetails) {
         viewModelScope.launch(Dispatchers.IO + handler) {
             likeDetailPhotoUseCase.likeDetailPhoto(item)
-            val a = onePhotoDetailsUseCase.getPhotoDetails(id = item.id)
             _loadState.value = LoadState.SUCCESS
-            _state.value = DetailsState.Success(a)
+            _state.value = DetailsState.Success(onePhotoDetailsUseCase.getPhotoDetails(id = item.id))
         }
     }
 

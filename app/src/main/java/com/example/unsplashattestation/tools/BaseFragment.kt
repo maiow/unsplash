@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<B:ViewBinding>:Fragment() {
+abstract class BaseFragment<B : ViewBinding> : Fragment() {
 
-    private var _binding:B?=null
-    val binding get()= _binding!!
+    private var _binding: B? = null
+    val binding get() = _binding!!
 
-    abstract fun initBinding(inflater: LayoutInflater):B
+    abstract fun initBinding(inflater: LayoutInflater): B
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +29,6 @@ abstract class BaseFragment<B:ViewBinding>:Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding =null
+        _binding = null
     }
 }

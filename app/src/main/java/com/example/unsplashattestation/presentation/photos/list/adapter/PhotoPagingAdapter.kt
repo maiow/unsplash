@@ -12,7 +12,6 @@ class PhotoPagingAdapter(
     private val onClick: (ClickableView, Photo) -> Unit
 ) : PagingDataAdapter<Photo, PhotoViewHolder>(PhotoDiff()) {
 
-    /**вот тут правильно сделала что вдругом алаптере подругму?*/
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         getItem(position)?.let { item ->
             holder.bind(item) { ClickableView, Photo ->

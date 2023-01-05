@@ -21,8 +21,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
 
-    override fun initBinding(inflater: LayoutInflater) =
-        FragmentPhotosBinding.inflate(inflater)
+    override fun initBinding(inflater: LayoutInflater) = FragmentPhotosBinding.inflate(inflater)
 
     private val viewModel by viewModels<PhotosViewModel>()
 
@@ -34,7 +33,6 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         observe()
         loadStateItemsObserve()
         loadStateLike()
@@ -55,13 +53,11 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
         val action =
             PhotosFragmentDirections.actionNavigationPhotosToNavigationPhotoDetails(item.id)
         when (buttonState) {
-            ClickableView.PHOTO ->
-                findNavController().navigate(action)
+            ClickableView.PHOTO -> findNavController().navigate(action)
             ClickableView.LIKE -> viewModel.like(item)
         }
     }
 
-    /** я надеюсь что хотя бы разобрались что происходит*/
     private fun setSearchView() {
         val searchView = binding.searchBar.menu.getItem(0).actionView as SearchView
         searchView.setChangeTextListener { query ->
@@ -88,8 +84,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
     private fun loadStateLike() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loadState.collect { loadStateLike ->
-                binding.error.isVisible =
-                    loadStateLike == LoadState.ERROR
+                binding.error.isVisible = loadStateLike == LoadState.ERROR
             }
         }
     }

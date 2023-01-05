@@ -11,7 +11,6 @@ class PhotoViewHolder(private val binding: PhotoViewHolderBinding) :
 
     fun bind(item: Photo, onClick: (ClickableView, item: Photo) -> Unit) {
 
-
         binding.photo.setOnClickListener {
             onClick(ClickableView.PHOTO, item)
         }
@@ -26,8 +25,6 @@ class PhotoViewHolder(private val binding: PhotoViewHolderBinding) :
         binding.authorAvatar.loadImage(item.userAvatar)
 
         binding.authorName.text = item.userName
-
-
     }
 }
 
