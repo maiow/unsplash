@@ -7,7 +7,6 @@ import com.example.unsplashattestation.data.state.ClickableView
 import com.example.unsplashattestation.databinding.PhotoViewHolderBinding
 import com.example.unsplashattestation.domain.model.Photo
 
-
 class PhotoPagingAdapter(
     private val onClick: (ClickableView, Photo) -> Unit
 ) : PagingDataAdapter<Photo, PhotoViewHolder>(PhotoDiff()) {

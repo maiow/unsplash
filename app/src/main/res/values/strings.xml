@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">Unsplash</string>
     <string name="title_photos">Photos</string>
     <string name="title_collections">Collections</string>
-    <string name="title_user">Profile</string>
+    <string name="title_user">User</string>
     <string-array name="onboarding_texts_array">
         <item>Make photo, publish, gather an audience, get feedback!</item>
         <item>Share with friends, make collections</item>
@@ -26,10 +26,7 @@
     </string>
     <string name="search_hint">Search images...</string>
     <string name="no_connection">Check the network connection</string>
-    <string name="photos_fragment_title">Photos</string>
-    <string name="collection_fragment_tittle">Collections</string>
     <string name="logout">Logout</string>
-    <string name="user_fragment_title">Profile</string>
     <string name="download_finished">Download finished</string>
     <string name="open">OPEN</string>
     <string name="failed_download">Download unsuccessful</string>

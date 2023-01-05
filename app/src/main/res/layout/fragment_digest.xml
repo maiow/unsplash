@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/green"
-            app:title="@string/collection_fragment_tittle"/>
+            app:title="@string/title_collections"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

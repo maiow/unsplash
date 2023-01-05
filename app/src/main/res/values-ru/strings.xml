@@ -23,10 +23,7 @@
     </string>
     <string name="search_hint">Найти фото...</string>
     <string name="no_connection">Проверьте состояние сети</string>
-    <string name="photos_fragment_title">Фотографии</string>
-    <string name="collection_fragment_tittle">Коллекции</string>
     <string name="logout">Выйти</string>
-    <string name="user_fragment_title">Профиль</string>
     <string name="download_finished">Загрузка завершена</string>
     <string name="open">ОТКРЫТЬ</string>
     <string name="failed_download">Ошибка загрузки</string>
@@ -55,7 +52,7 @@
     </plurals>
     <string name="title_photos">Фотографии</string>
     <string name="title_collections">Коллекции</string>
-    <string name="title_user">Профиль</string>
+    <string name="title_user">Пользователь</string>
     <string name="no_location">Для этой фотографии нет данных о местоположении</string>
     <string name="one_photo_fragment_title">Фотография</string>
 </resources>

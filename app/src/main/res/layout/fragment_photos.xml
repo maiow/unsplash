@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/green"
-                    app:title="@string/photos_fragment_title"
+                    app:title="@string/title_photos"
                     app:menu="@menu/search_menu" />
 
         </com.google.android.material.appbar.AppBarLayout>

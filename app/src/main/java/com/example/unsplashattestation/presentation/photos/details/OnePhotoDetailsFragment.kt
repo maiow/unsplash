@@ -31,12 +31,6 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-/**смотри фрагмет в триста строчек это прям сложно...я на 100й уже устал читать)))
- * кто тебе мешает сосзать абстрактный класс создать BaseOnePhotoDetailsFragment который также
- * будет унаследован от BaseFragment и скинуть туда хотя бы функции загрузки, все оперции со снек барами
- * ну и еще что нибудь
- * А этот фрагмент уже унаследовать от BaseOnePhotoDetailsFragment */
-
 @AndroidEntryPoint
 class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
 
@@ -46,8 +40,6 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
     private val viewModel: OnePhotoDetailsViewModel by viewModels()
     private val args by navArgs<OnePhotoDetailsFragmentArgs>()
 
-    /**все переменные который не требуют контекста или еще чего то что прям необходимо объявить во фрагменте
-     * лучше прятать во фрагменте, А конкретно для этой пары лучше создать свой отдельный класс */
     private var lat: Double? = null
     private var lon: Double? = null
 
@@ -55,11 +47,9 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
         requireContext().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
     }
 
-    /**лет инит вар зло...нужен только для даггера, старайтесь без него обходится*/
     private lateinit var receiver: BroadcastReceiver
     private var enableDownloadFlag = false
 
-    /** тут для более низких апи проверка на пермишены? */
     private val launcher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { map ->
@@ -83,14 +73,9 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
         loadStateLike()
     }
 
-    /** почему в onResume */
     override fun onResume() {
         super.onResume()
         val filter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-        /**броад каст рессивер нужен что бы при свернутом приложении мы получили оповещение
-         * что мы файл до качали, так как у нас менеджер загрузок мы и так узнаем когда файл будет скачен
-         * и я уже говорил что лучше вынести в отдельный класс...как минимум это сократит количество строчек
-         * во фрагменте*/
         receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent) {
                 val reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
@@ -111,7 +96,6 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
         registerReceiver(requireContext(), receiver, filter, RECEIVER_EXPORTED)
     }
 
-    /**опять это обсервер*/
     private fun getLoadingState() {
         viewLifecycleOwner.lifecycleScope
             .launchWhenStarted {
@@ -127,8 +111,6 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
         if (loadState == LoadState.SUCCESS) updateUi()
     }
 
-    /**Салед класс тут не к селу ни к городу
-     * из за этого ты данные почему то обзываешь стейтом, что очегь странно*/
     private fun updateUi() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.state.collect { state ->
@@ -194,9 +176,6 @@ class OnePhotoDetailsFragment : BaseFragment<FragmentOnePhotoDetailsBinding>() {
         }
     }
 
-    /** тут прям надо объснять как лучше делать....потому что то что я видел ни куда не годится
-     * сами путаетесь
-     * */
     private fun loadStateLike() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loadState.collect { loadStateLike ->

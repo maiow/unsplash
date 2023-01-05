@@ -39,21 +39,15 @@ class DigestDetailsFragment : BaseFragment<FragmentDigestDetailsBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         observe()
-        getLoadingState()
+        loadStateObserver()
         loadStateItemsObserve()
         loadStateLike()
         settingAdapter()
         initRefresher()
     }
 
-    /** Обсервер чего? из названия должно быть понятно*/
-
     private fun observe() {
         viewLifecycleOwner.lifecycleScope.launch {
-            /** не очень понимаю зачем вам обращатся к вью модели в корутине
-             * не совсем правильно
-             * это обсержер он подписывается на делает какие то операции с вью моделью, который еще
-             * ни как на сам обсервер не влияют*/
             viewModel.setId(args.id) { adapter.refresh() }
             viewModel.getPhoto().collect { pagingData ->
                 adapter.submitData(pagingData)
@@ -61,9 +55,7 @@ class DigestDetailsFragment : BaseFragment<FragmentDigestDetailsBinding>() {
         }
     }
 
-    /** это лоад стайт обсервер и в название лучше так и писать loadStateObserver */
-    private fun getLoadingState() {
-        /** смотри коммент выше*/
+    private fun loadStateObserver() {
         viewModel.getDigestInfo(args.id)
         viewLifecycleOwner.lifecycleScope
             .launchWhenStarted {
@@ -71,13 +63,11 @@ class DigestDetailsFragment : BaseFragment<FragmentDigestDetailsBinding>() {
             }
     }
 
-    /**почему не вен с веткой else?*/
     private fun updateUiOnServerResponse(loadState: LoadState) {
         if (loadState == LoadState.ERROR) {
             binding.error.isVisible = true
         }
         if (loadState == LoadState.SUCCESS) {
-            /** вот тут тоже обсервер который соит вынести в отдельную функцию*/
             viewLifecycleOwner.lifecycleScope
                 .launchWhenStarted {
                     viewModel.state
@@ -85,11 +75,7 @@ class DigestDetailsFragment : BaseFragment<FragmentDigestDetailsBinding>() {
                 }
         }
     }
-/**очень странное разбиение на функции...ты вызваешь эту функцию один раз,в нутри коррутины
- * почему бы все что находтся в функции не обернуть в корутину и не вызвать в одну строчку выше?
- * и опять такиж (это лично мое) для таких целей не очень люблю салед классы говорил почему
- * как миними две вещи появляется is в when e (это просто не нравится ) во вторых получается наругение
- * одного из принципов типо одна функция одно действие...а тут обсервер одновременно и на стейт и на данные*/
+
     private fun showInfo(state: DigestState) {
         when (state) {
             DigestState.NotStartedYet ->
@@ -114,13 +100,11 @@ class DigestDetailsFragment : BaseFragment<FragmentDigestDetailsBinding>() {
         }
     }
 
-    /** зачем тут переменная? Directions сразу кидаем в навкотроллер */
     private fun onClick(buttonState: ClickableView, item: Photo) {
-        val action =
-            DigestDetailsFragmentDirections.actionDigestDetailsFragmentToNavigationPhotoDetails(item.id)
         when (buttonState) {
             ClickableView.PHOTO ->
-                findNavController().navigate(action)
+                findNavController().navigate(DigestDetailsFragmentDirections.
+                actionDigestDetailsFragmentToNavigationPhotoDetails(item.id))
             ClickableView.LIKE -> viewModel.like(item)
         }
     }
@@ -139,7 +123,6 @@ class DigestDetailsFragment : BaseFragment<FragmentDigestDetailsBinding>() {
         }
     }
 
-    /** неочень понимаю зачем еще один обсервер на лайки?*/
     private fun loadStateLike() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loadState.collect { loadStateLike ->

@@ -20,7 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/green"
             app:menu="@menu/logout_menu"
-            app:title="@string/user_fragment_title" />
+            app:title="@string/title_user" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -75,7 +75,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             binding.locationButton.isEnabled = false
         }
         if (loadState == LoadState.SUCCESS) {
-            /**я уже писал в других классах вынести корутину в тот же фрагмент*/
             viewLifecycleOwner.lifecycleScope
                 .launchWhenStarted {
                     viewModel.state
@@ -83,10 +82,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 }
         }
     }
-
-
-    /**опять салед классы вы тогда договоритесь и далите лоад стейт энам класс который...вы из 4х
-     * стейтов юзаете один*/
 
     private fun showInfo(state: ProfileState) {
         when (state) {
@@ -105,13 +100,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         }
     }
-/**как помне переменная тут лишняя*/
+
     private fun onClick(buttonState: ClickableView, item: Photo) {
-        val action =
-            ProfileFragmentDirections.actionNavigationUserToNavigationPhotoDetails(item.id)
         when (buttonState) {
             ClickableView.PHOTO ->
-                findNavController().navigate(action)
+                findNavController().navigate(ProfileFragmentDirections
+                    .actionNavigationUserToNavigationPhotoDetails(item.id))
             ClickableView.LIKE -> {
                 viewModel.like(item)
                 getLoadingState()
@@ -133,13 +127,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
-    /**раз уж вы используете салед классы откажытесь от энамов*/
     private fun loadStateLike() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loadState.collect { loadStateLike ->
                 binding.error.isVisible =
                     loadStateLike == LoadState.ERROR
-
             }
         }
     }
@@ -152,7 +144,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
-    /** очень странная понимания этой функции...объядени две ниже функции в одну*/
     private fun showLocationOnMap(locationUri: Uri) {
         val mapIntent = Intent(Intent.ACTION_VIEW).apply { data = locationUri }
         startActivity(mapIntent)
@@ -174,7 +165,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
-    /**в чем проблемма вынести в экстеншен?*/
     private fun setUpAlertDialog(preferences: SharedPreferences) {
         val dialog = AlertDialog.Builder(requireContext())
         dialog.setTitle(R.string.logout_title)
