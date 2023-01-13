@@ -15,8 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
-    override fun initBinding(inflater: LayoutInflater) =
-        FragmentOnboardingBinding.inflate(inflater)
+    private var mediator: TabLayoutMediator? = null
+
+    override fun initBinding(inflater: LayoutInflater) = FragmentOnboardingBinding.inflate(inflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,9 +33,10 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         binding.viewPager.registerOnPageChangeCallback(AnimateImageOnPageChange(binding.ellipseImage))
     }
 
-    private fun setTabs() =
-        TabLayoutMediator(binding.tabs, binding.viewPager) { _, _ -> }.attach()
-
+    private fun setTabs() {
+        mediator = TabLayoutMediator(binding.tabs, binding.viewPager) { _, _ -> }
+        mediator!!.attach()
+    }
 
     private fun setAuthorizeButton() {
         binding.authorizeButton.setOnClickListener {
@@ -45,5 +47,11 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
     private fun saveOnbordingShown() {
         val prefs = createSharedPreference(TOKEN_SHARED_NAME)
         prefs.edit().putBoolean(ONBOARDING_IS_SHOWN, true).apply()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mediator?.detach()
+        mediator = null
     }
 }
