@@ -1,6 +1,8 @@
 # Unsplash
-Android Kotlin application with Unsplash API
 
+Copy/silent fork of Team Project of myself and MrVSV: https://github.com/MrVSV/unsplash-homework for further improvements. Android Kotlin application with Unsplash API.
+
+~~~~~~~~
 Общая информация
 
 Приложение для популярного сервиса с фотографиями Unsplash.
