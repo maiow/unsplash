@@ -1,4 +1,4 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/maiow/unsplash)
+![GitHub last commit](https://img.shields.io/github/last-commit/maiow/unsplash?logo=GitHub)
 
 ### Unsplash
 
