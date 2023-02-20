@@ -1,4 +1,6 @@
-# Unsplash
+![GitHub last commit](https://img.shields.io/github/last-commit/maiow/unsplash)
+
+### Unsplash
 
 Copy/silent fork of Team Project of myself and MrVSV: https://github.com/MrVSV/unsplash-homework for further improvements. Android Kotlin application with Unsplash API.
 
