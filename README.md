@@ -5,6 +5,11 @@
 Copy/silent fork of Team Project of myself and MrVSV: https://github.com/MrVSV/unsplash-homework for further improvements. 
 Android Kotlin application with Unsplash API.
 
+Onboarding:
+
+![onb](https://user-images.githubusercontent.com/113892176/224315940-a611a791-f470-4034-8a6e-142580558b2f.gif)
+
+
 ~~~~~~~~
 Общая информация
 
